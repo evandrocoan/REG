@@ -1,0 +1,51 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: Registry
+file_extensions:
+  - reg
+  - REG
+scope: source.reg
+contexts:
+  main:
+    - match: Windows Registry Editor Version 5\.00|REGEDIT4
+      scope: keyword.control.import.reg
+    - match: (;).*$
+      scope: comment.line.semicolon.reg
+      captures:
+        1: punctuation.definition.comment.reg
+    - match: '\b[\h]+\b'
+      scope: constant.numeric.hexadecimal.reg
+    - match: ",+"
+      scope: constant.numeric.hex.comma.reg
+    - match: \\
+      scope: keyword.operator.arithmetic.linecontinuation.reg
+    - match: '^\s*(\[(?!-))(.*?)(\])'
+      scope: entity.name.function.section.add.reg
+      captures:
+        1: punctuation.definition.section.reg
+        2: entity.section.reg
+        3: punctuation.definition.section.reg
+    - match: '^\s*(\[-)(.*?)(\])'
+      scope: entity.name.function.section.delete.reg
+      captures:
+        1: punctuation.definition.section.reg
+        2: entity.section.reg
+        3: punctuation.definition.section.reg
+    - match: '^\s?(@|["''].*?["''])\s*'
+      scope: meta.declaration.reg
+      captures:
+        1: support.constant.reg
+    - match: \s*=\s*
+      scope: keyword.operator.reg
+    - match: "-"
+      scope: keyword.operator.reg
+    - match: '["''].*["'']'
+      scope: string.quoted.reg
+    - match: '((?i:dword)|(?i:hex))(\(([\dabcdefABCDEF]*)\))?(\:)?'
+      scope: meta.declaration.reg
+      captures:
+        1: variable.parameter.datatype.reg
+        2: keyword.operator.brackets.reg
+        3: support.constant.reg
+        4: support.constant.reg
