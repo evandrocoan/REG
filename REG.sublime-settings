@@ -1,6 +1,6 @@
-// By default we use regedit.
+// By default we use regedit for the Jump to Reg Key command.
 // you can set `use_regedit` to false, then define a custom editor with `reg_editor`
 {
-    "use_regedit": true,
+	"use_regedit": true,
 	// "reg_editor": ["C:\\Program Files\\Registry Workshop\\RegWorkshop.exe", "/g"]
 }

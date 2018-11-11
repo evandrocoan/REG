@@ -1,4 +1,5 @@
 {
 	"selector": "source.reg",
-    "cmd": ["regedit.exe", "$file"]
+	"shell": true,
+	"cmd": ["regedit.exe", "$file"]
 }
