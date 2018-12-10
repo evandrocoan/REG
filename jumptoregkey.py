@@ -39,6 +39,7 @@ class jumptoregkeyCommand(sublime_plugin.TextCommand):
 				regjumpcmd = environ['SystemRoot'] + '\\regedit.exe' # just call regedit, it should open to target path
 			else:  # else pass selected key to custom regjumper cmd
 				regjumpcmd = sublime.load_settings("REG.sublime-settings").get("reg_editor")
+				regjumpcmd = [s.replace("{PACKAGE_PATH}", sublime.packages_path()) for s in regjumpcmd]
 				regjumpcmd.append(regkey)
 			thisproc = subprocess.Popen(regjumpcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 			# print(thisproc.communicate()[0])
